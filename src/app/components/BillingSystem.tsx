@@ -567,7 +567,7 @@ export default function BillingSystem() {
           <div 
             ref={pdfRef} 
             className="relative w-full bg-white p-0" 
-            style={{ display: 'block', height: 'auto', position: 'absolute', left: '-9999px', top: '0', width: '794px' }}
+            style={{ display: 'block', height: 'auto', position: 'absolute', left: '-9999px', top: '0', width: '794px', direction: language === 'ar' ? 'rtl' : 'ltr' }}
           >
             <div className="pdf-content">
               <div className="relative">
@@ -575,12 +575,12 @@ export default function BillingSystem() {
                   {/* Header */}
                   <div className="flex justify-between items-center mb-8">
                     <div>
-                      <h1 className="text-3xl font-bold text-blue-800">INVOICE</h1>
+                      <h1 className="text-3xl font-bold text-blue-800">{t.invoice}</h1>
                       <p className="text-gray-600 mt-2">
-                        <span className="font-medium">Invoice Date:</span> {new Date().toLocaleDateString()}
+                        <span className="font-medium">{t.date}:</span> {new Date().toLocaleDateString(language === 'ar' ? 'ar-AE' : undefined)}
                       </p>
                       <p className="text-gray-600">
-                        <span className="font-medium">Invoice #:</span> INV-{Math.floor(100000 + Math.random() * 900000)}
+                        <span className="font-medium">{t.invoiceNo}:</span> INV-{Math.floor(100000 + Math.random() * 900000)}
                       </p>
                     </div>
                     <div className="w-32 h-32 flex items-center justify-center">
@@ -601,10 +601,10 @@ export default function BillingSystem() {
                       <p className="text-sm text-gray-600">Email: info@myverna.com</p>
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-gray-700 mb-2">Bill To:</h3>
-                      <p className="text-sm text-gray-600">{customerInfo.name || 'Customer'}</p>
-                      <p className="text-sm text-gray-600">Address: {customerInfo.address || 'N/A'}</p>
-                      <p className="text-sm text-gray-600">Phone: {customerInfo.phone || 'N/A'}</p>
+                      <h3 className="text-lg font-bold text-gray-700 mb-2">{t.billTo}:</h3>
+                      <p className="text-sm text-gray-600">{customerInfo.name || t.customer}</p>
+                      <p className="text-sm text-gray-600">{t.address}: {customerInfo.address || 'N/A'}</p>
+                      <p className="text-sm text-gray-600">{t.phone}: {customerInfo.phone || 'N/A'}</p>
                     </div>
                   </div>
                   
@@ -625,11 +625,11 @@ export default function BillingSystem() {
                       <table className="w-full mb-4 border-collapse">
                         <thead>
                           <tr className="bg-blue-50 text-left text-gray-600 text-sm">
-                            <th className="px-4 py-2 border border-gray-200 rounded-tl-lg">Flavor</th>
-                            <th className="px-4 py-2 border border-gray-200">Variant</th>
-                            <th className="px-4 py-2 text-right border border-gray-200">Quantity</th>
-                            <th className="px-4 py-2 text-right border border-gray-200">Price ($)</th>
-                            <th className="px-4 py-2 text-right border border-gray-200 rounded-tr-lg">Total ($)</th>
+                            <th className="px-4 py-2 border border-gray-200 rounded-tl-lg">{t.flavor}</th>
+                            <th className="px-4 py-2 border border-gray-200">{t.variant}</th>
+                            <th className="px-4 py-2 text-right border border-gray-200">{t.quantity}</th>
+                            <th className="px-4 py-2 text-right border border-gray-200">{t.price}</th>
+                            <th className="px-4 py-2 text-right border border-gray-200 rounded-tr-lg">{t.total}</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -644,7 +644,7 @@ export default function BillingSystem() {
                           ))}
                           <tr className="bg-gray-50">
                             <td className="px-4 py-2 text-right border border-gray-200" colSpan={4}>
-                              <span className="font-medium">Subtotal ({brand.name})</span>
+                              <span className="font-medium">{t.subtotal} ({brand.name})</span>
                             </td>
                             <td className="px-4 py-2 text-right border border-gray-200 font-medium">
                               ${brand.subtotal.toFixed(2)}
@@ -660,15 +660,15 @@ export default function BillingSystem() {
                     <div className="flex justify-end">
                       <div className="w-64">
                         <div className="flex justify-between py-2">
-                          <span className="font-medium">Subtotal:</span>
+                          <span className="font-medium">{t.subtotal}:</span>
                           <span className="font-medium">${billing.totalAmount.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between py-2 border-b border-gray-200">
-                          <span className="font-medium">Tax (0%):</span>
+                          <span className="font-medium">{t.tax}:</span>
                           <span className="font-medium">$0.00</span>
                         </div>
                         <div className="flex justify-between py-3 text-lg font-bold text-blue-800">
-                          <span>TOTAL:</span>
+                          <span>{t.totalAmount}:</span>
                           <span>${billing.totalAmount.toFixed(2)}</span>
                         </div>
                       </div>
@@ -677,7 +677,7 @@ export default function BillingSystem() {
                   
                   {/* Footer */}
                   <div className="mt-12 pt-6 border-t border-gray-200 text-center">
-                    <p className="text-xs text-gray-400">Invoice generated on {new Date().toLocaleString()}</p>
+                    <p className="text-xs text-gray-400">{t.generatedOn} {new Date().toLocaleString(language === 'ar' ? 'ar-AE' : undefined)}</p>
                   </div>
                 </div>
               </div>
