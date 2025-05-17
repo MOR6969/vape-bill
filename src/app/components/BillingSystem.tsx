@@ -298,40 +298,43 @@ export default function BillingSystem() {
         <BrandSelector brands={ALL_BRANDS} onSelectBrand={handleSelectBrand} />
       ) : (
         <>
-          <div className="glass-card p-4 mb-6 flex justify-between items-center">
-            <button 
-              onClick={handleBackToBrands} 
-              className="btn btn-secondary flex items-center gap-2"
-            >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                className="h-5 w-5" 
-                viewBox="0 0 20 20" 
-                fill="currentColor"
+          <div className="glass-card p-4 mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center gap-3">
+              <button 
+                onClick={handleBackToBrands} 
+                className="btn btn-secondary flex items-center gap-2 w-full sm:w-auto justify-center text-base py-3"
               >
-                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
-              </svg>
-              Back to Brands
-            </button>
-            <div className="flex items-center gap-2">
-              <img 
-                src={selectedBrand.image} 
-                alt={selectedBrand.name} 
-                className="h-10 w-10 object-contain"
-              />
-              <span className="text-xl font-bold text-gray-700">{selectedBrand.name}</span>
-              <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                {selectedBrand.flavors.length} Flavors
-              </span>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-5 w-5" 
+                  viewBox="0 0 20 20" 
+                  fill="currentColor"
+                >
+                  <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+                </svg>
+                Back to Brands
+              </button>
+              <div className="hidden sm:block h-8 w-px bg-gray-200 mx-2"></div>
+              <div className="flex items-center gap-2 w-full sm:w-auto justify-center">
+                <img 
+                  src={selectedBrand.image} 
+                  alt={selectedBrand.name} 
+                  className="h-10 w-10 object-contain"
+                />
+                <span className="text-xl font-bold text-gray-700">{selectedBrand.name}</span>
+                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                  {selectedBrand.flavors.length} Flavors
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center gap-3 mt-4 sm:mt-0">
               <LanguageToggle
                 language={language}
                 onToggle={handleLanguageToggle}
               />
               <button 
                 onClick={handleExportQuantityPDF} 
-                className="btn btn-secondary flex items-center gap-2"
+                className="btn btn-secondary flex items-center gap-2 w-full sm:w-auto justify-center text-base py-3"
                 title="Export quantity-only PDF"
               >
                 <ExportIcon />
@@ -339,7 +342,7 @@ export default function BillingSystem() {
               </button>
               <button 
                 onClick={handleExportPDF} 
-                className="btn btn-primary flex items-center gap-2"
+                className="btn btn-primary flex items-center gap-2 w-full sm:w-auto justify-center text-base py-3"
               >
                 <ExportIcon />
                 Export Full Invoice
