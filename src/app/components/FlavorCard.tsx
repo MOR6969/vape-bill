@@ -77,7 +77,7 @@ export default function FlavorCard({ flavor, onUpdateVariant }: FlavorCardProps)
         <div className="flex-grow">
           <h3 className="text-xl font-bold">{flavor.name}</h3>
           <div className="flex items-center mt-1">
-            <p className="text-sm text-gray-600">{flavor.variants.length} variants available</p>
+            <p className="text-sm text-gray-600">{flavor.variants.length} flavor available</p>
             {activeVariantCount > 0 && (
               <span className="ml-2 bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">
                 {activeVariantCount} in cart
