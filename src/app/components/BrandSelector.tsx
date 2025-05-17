@@ -36,7 +36,7 @@ export default function BrandSelector({ brands, onSelectBrand }: BrandSelectorPr
                 />
               </div>
               <h3 className="text-xl font-bold text-center group-hover:text-blue-600 transition-colors">{brand.name}</h3>
-              <p className="text-sm text-gray-500 text-center mt-1">{brand.flavors.length} flavors available</p>
+              <p className="text-sm text-gray-500 text-center mt-1">{brand.flavors.length} variant available</p>
               <div className="mt-4 inline-flex items-center text-blue-600">
                 <span className="text-sm font-medium">View Products</span>
                 <svg 
